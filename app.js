@@ -392,7 +392,27 @@ async function storeCandidatePhoto(id,index){const f=getLandmark(id),ph=commonsC
 function bytesLabel(n){return (n/1024/1024).toFixed(1)+' MB';}
 async function fileToDataURL(blob){return await new Promise((resolve,reject)=>{const r=new FileReader();r.onload=()=>resolve(r.result);r.onerror=()=>reject(r.error);r.readAsDataURL(blob);});}
 function dataURLToBlob(data){const parts=String(data).split(',');const mime=(parts[0].match(/data:([^;]+)/)||[])[1]||'image/jpeg';const raw=atob(parts[1]||'');const a=new Uint8Array(raw.length);for(let i=0;i<raw.length;i++)a[i]=raw.charCodeAt(i);return new Blob([a],{type:mime});}
-function uri(url){const key=localKey(url);if(key)return photoObjects.get(key)||'';if(/^trial_photos\/[0-9]{2}_800_Q40\.webp$/.test(String(url||'')))return new URL(url,location.href).href;try{const u=new URL(url,location.href);return /^https?:$/.test(u.protocol)?u.href:'';}catch(e){return '';}}
+// 경복궁2 시험 사진: 내장 데이터에서 일회만 Blob URL 생성. IndexedDB에 기록하지 않음.
+const gb2PhotoUrlCache=new Map();
+function gb2PhotoUrl(path){
+ const name=String(path||'').split('/').pop(),inline=window.GB2_INLINE_WEBP;
+ if(!inline||!Object.prototype.hasOwnProperty.call(inline,name))return '';
+ if(gb2PhotoUrlCache.has(name))return gb2PhotoUrlCache.get(name);
+ try{
+  const raw=atob(inline[name]),bytes=new Uint8Array(raw.length);
+  for(let i=0;i<raw.length;i++)bytes[i]=raw.charCodeAt(i);
+  const url=URL.createObjectURL(new Blob([bytes],{type:'image/webp'}));
+  gb2PhotoUrlCache.set(name,url);return url;
+ }catch(error){console.error('경복궁2 WebP 로드 오류',name,error);return '';}
+}
+function uri(url){
+ const key=localKey(url);if(key)return photoObjects.get(key)||'';
+ if(/^trial_photos\/[0-9]{2}_800_Q40\.webp$/.test(String(url||''))){
+  return gb2PhotoUrl(url)||new URL(url,location.href).href;
+ }
+ try{const u=new URL(url,location.href);return /^https?:$/.test(u.protocol)?u.href:'';}catch(e){return '';}
+}
+
 function wikiLink(x){const lang=/^[a-z-]+$/.test(x.wikiLang||'')?x.wikiLang:'en';return 'https://'+lang+'.wikipedia.org/wiki/'+encodeURIComponent(String(x.wikiTitle||x.aliases?.[0]||x.name).replaceAll(' ','_'));}
 function namedPhoto(f){const selected=(f.photos||[]).find(p=>p.url===featurePhotoUrl(f.id))||(f.photos||[]).find(p=>localKey(p.url))||(f.photos||[]).find(p=>p.hero)||(f.photos||[])[0];return selected&&uri(selected.url)?{...selected,confirmed:true}:wikiCache.get(f.id)||null;}
 function gallery(f){const out=[];for(const x of f.photos||[]){if(uri(x.url))out.push({...x,confirmed:true});}const base=wikiCache.get(f.id);if(base&&uri(base.url)&&!out.some(p=>p.url===base.url))out.push({...base,confirmed:false});const preferred=featurePhotoUrl(f.id);const custom=orderedPhotoUrls(f.id);if(Array.isArray(custom)&&custom.length){const rank=new Map(custom.map((x,i)=>[x,i]));return out.sort((a,b)=>(rank.has(a.url)?rank.get(a.url):99999)-(rank.has(b.url)?rank.get(b.url):99999));}return out.sort((a,b)=>(a.url===preferred?-2:localKey(a.url)?-1:0)-(b.url===preferred?-2:localKey(b.url)?-1:0));}
