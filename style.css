@@ -147,3 +147,14 @@
 @media(max-width:700px){.country-picker,.country-picker.collapsed{grid-template-columns:repeat(3,minmax(0,1fr));}}
 .pilot-country-grid{grid-template-columns:repeat(5,minmax(0,1fr));}
 @media(max-width:560px){.pilot-country-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
+
+/* 800/40 BRIGHTNESS v1: screen filter only; original WebP bytes unchanged. */
+:root { --photo-display-brightness: 1.08; }
+#app img, .overlay img, .photo-overlay img, .country-tour img, .photo-frame img, .tour-collage > img { filter: brightness(var(--photo-display-brightness,1.08)); }
+.brightness-setting { margin:16px 0; border:2px solid #e9c97b; background:#fffaf0; padding:16px; border-radius:18px; }
+.brightness-setting .section-head { display:flex;align-items:center;justify-content:space-between;gap:12px; }
+.brightness-setting h3 { margin:0;font-size:21px; }
+.brightness-setting strong { font-size:26px;color:#a65b16; }
+.brightness-control { display:flex;align-items:center;gap:10px;flex-wrap:wrap; }
+.brightness-control input[type=range] { flex:1;min-width:190px;accent-color:#b56d27;height:40px; }
+.brightness-control label {font-weight:750;font-size:13px;color:#69513b;}
