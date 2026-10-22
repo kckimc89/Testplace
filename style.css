@@ -147,3 +147,14 @@
 @media(max-width:700px){.country-picker,.country-picker.collapsed{grid-template-columns:repeat(3,minmax(0,1fr));}}
 .pilot-country-grid{grid-template-columns:repeat(5,minmax(0,1fr));}
 @media(max-width:560px){.pilot-country-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
+
+/* V1.1: non-destructive global screen brightness */
+.photo-frame img,.story-cover img,.gallery-thumb img,.manager-photo img,.tour-photo,.candidate-slideshow img,.photo-overlay img,.card img,.home-feature img,.broadcast-strip img {filter:brightness(var(--photo-brightness,1.08));}
+#photoTravelResults{margin-top:16px}#photoTravelResults .candidate-grid{margin-top:14px}
+#travelCountrySelect,#travelPlaceSelect{width:100%;max-width:640px;padding:12px;border-radius:12px;margin:6px 0 14px}
+
+/* V1.2: Three equal, landmark-specific tabs */
+.story-tabbar{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.story-tab{min-width:0;padding:12px 5px;white-space:normal;font-size:clamp(12px,1.7vw,17px)}
+.detail-travel-panel{margin-top:12px}
+@media(max-width:480px){.story-tab{font-size:12px;padding:10px 3px}}
