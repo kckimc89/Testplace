@@ -1,7 +1,11 @@
-세계 명소대백과 Stage 2.3.21.8
-나라별 ZIP 저장 오류(JSON.stringify cyclic structures) 수정: 런타임 순환 참조를 manifest.json에서 제외.
-나라별 한 개 ZIP, 나라명 앞 파일명, 4개국 검색 보강, 기존 사진·자료 보존.
-실제 iPad의 전체 8,507장 백업 및 복원은 검증하지 않았습니다.
+# New 세계 명소대백과 41개국 시험판 0.1
 
+기존 15개국 378명소의 데이터와 원본 앱 코드를 유지하고, 26개국 420명소 후보를 추가한 **데이터 확장 시험판**입니다. 총 41개국 798명소.
 
-Stage 2.3.21.10: Fix country backup checkbox handler scope, include all 15 focus countries (even with zero stored photos), and show all 15 countries in a non-scrolling grid on the initial screen. This build inherits original Stage 2.3.21.8 catalog and does not delete browser photo data. Backup/restore on iPad requires end-to-end verification.
+새로운 16개국에는 각 20개, 나머지 10개국에는 각 10개의 후보를 등록했습니다.
+
+주의: 신규 420개 명소의 설명은 임시 안내문이며, 사진은 미수집입니다. 여행백과 V3.9.8의 catalog.json이 없으므로 여행백과 원본 25개국 목록과의 일치도 확인되지 않았습니다.
+
+'사진 여행' 독립 탭 이동, 800px/Q40 사진 변환, 사진 30장 채우기 및 전체 백업·복원 통합은 이 버전에서 아직 구현/검증되지 않았습니다. 기존 '다른사진 찾기' 관련 코드는 그대로 두었습니다.
+
+원본과 다른 저장소에 배포하여 시험하십시오. 앱이 사용하는 브라우저 저장공간은 출처(origin)에 종속되므로 동일 주소에 덮어쓰지 마세요.

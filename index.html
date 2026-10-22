@@ -6,18 +6,18 @@
 <meta name="theme-color" content="#874719">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="세계 명소대백과">
-<meta name="description" content="사진으로 떠나는 세계 명소 탐험. 41개국 독립 시험판">
-<title>🌍 New 세계 명소대백과 · TESTPLACE V1.0</title>
-<link rel="manifest" href="manifest.webmanifest?v=testplace-41-100">
+<meta name="description" content="사진으로 떠나는 세계 명소 탐험. 41개국 명소대백과">
+<title>🌍 세계 명소대백과 · NEW 41 TEST 0.1</title>
+<link rel="manifest" href="manifest.webmanifest?v=new41-test01">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="stylesheet" href="style.css?v=testplace-41-100">
-<style id="new-bright-style">#view img,#detailOverlay img,#photoOverlay img,#countryTour img,#candidateOverlay img{filter:brightness(var(--lm-bright,1.08))}</style></head>
+<link rel="stylesheet" href="style.css?v=new41-test01">
+</head>
 <body>
 <div id="app" class="app">
   <header class="hero">
-    <h1>🌍 New 세계 명소대백과</h1>
-    <p>아이가 10년 뒤에도 사용할 수 있는 세계 명소 탐험 앱 · <strong>TESTPLACE V1.0</strong></p>
+    <h1>🌍 세계 명소대백과</h1>
+    <p>아이가 10년 뒤에도 사용할 수 있는 세계 명소 탐험 앱 · <strong>NEW 41 TEST 0.1</strong></p>
     <div class="stats" id="headerStats"></div>
     <div class="hero-ornament" aria-hidden="true">✧</div>
   </header>
@@ -25,7 +25,7 @@
     <button type="button" data-go="home" class="active">🏠 홈</button>
     <button type="button" data-go="countries">🌐 나라 탐험</button>
     <button type="button" data-go="landmarks">🏛️ 명소 탐험</button>
-    <button type="button" data-go="photos">🖼️ 사진 여행</button>
+    <button type="button" data-go="photos">🖼️ 사진 탐험</button>
     <button type="button" data-go="search">🔎 검색</button>
     <button type="button" data-go="wish">⭐ 가보고 싶어요</button>
     <button type="button" data-go="favorites">❤️ 즐겨찾기</button>
@@ -33,7 +33,7 @@
   </nav>
   <div class="parent-bar"><span>수정할 때만 켜세요</span><button type="button" id="inappUpdate" class="parent-switch" style="background:#e7f1ff;border-color:#9cb8dc;color:#164b77">🔄 앱에서 새 버전 확인</button><button id="parentToggle" type="button" class="parent-switch">🔒 부모모드 OFF · 켜기</button></div>
   <main id="view" aria-live="polite"></main>
-  <section class="panel" style="margin:15px auto;max-width:900px;padding:16px;border:1px solid #ead8ae;border-radius:16px"><strong>☀️ 부모 설정 · 전체 사진 밝기</strong> <label for="globalBright">밝기 <output id="globalBrightValue">108%</output></label><input id="globalBright" type="range" min="70" max="150" step="1" value="108" style="width:min(340px,70%);vertical-align:middle"><button type="button" id="globalBrightReset">원래 밝기 100%</button><p style="font-size:12px;color:#655">화면에만 적용하며 저장된 사진 파일의 픽셀은 변경하지 않습니다. 이 설정은 이 시험판에만 저장됩니다.</p></section><footer class="footer-note">세계 명소대백과 · TESTPLACE V1.0 · 음식대백과와 별도 저장 · 사진 출처와 정확성을 확인하며 성장하는 백과</footer>
+  <footer class="footer-note">세계 명소대백과 · NEW 41 TEST 0.1 · 음식대백과와 별도 저장 · 사진 출처와 정확성을 확인하며 성장하는 백과</footer>
 </div>
 <div id="detailOverlay" class="overlay" aria-hidden="true"><div class="modal" id="detailContent" role="dialog" aria-modal="true" aria-label="명소 상세"></div></div>
 <div id="albumManager" class="album-manager-overlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="사진첩 정리"><div class="album-manager-panel" id="albumManagerBody"></div></div>
@@ -55,8 +55,8 @@
 </div>
 <div id="countryTour" class="country-tour" aria-hidden="true" role="dialog" aria-label="나라 사진 여행"><img id="tourPhoto" class="tour-photo" alt="명소 사진"><div id="tourCollage" class="tour-collage" hidden></div><div id="tourPhotoFallback" class="tour-photo-fallback" style="display:none"></div><div class="tour-top"><h2 id="tourTitle">나라 사진 여행</h2><button type="button" data-act="tour-close">✕ 닫기</button></div><div class="tour-bottom"><p id="tourCaption" class="tour-caption"></p><span id="tourCredit" class="tour-credit"></span><div class="album-country-speed" aria-label="사진 재생 간격"><button type="button" data-act="album-speed" data-ms="1000">1초</button><button type="button" data-act="album-speed" data-ms="3000">3초</button><button type="button" data-act="album-speed" data-ms="5000">5초</button></div><div class="tour-controls"><button type="button" id="tourPrev" data-act="tour-prev">← 이전</button><button type="button" id="tourToggle" data-act="tour-toggle">⏸ 잠시 멈추기</button><button type="button" id="tourNext" data-act="tour-next">다음 →</button></div></div></div>
 <div id="candidateOverlay" class="photo-overlay candidate-slideshow" aria-hidden="true" role="dialog" aria-modal="true" aria-label="사진 후보 슬라이드쇼"><div class="candidate-slide-top"><span id="candidateCount">사진 후보</span><button class="btn" data-act="candidate-close">✕ 닫기</button></div><img id="candidateImage" alt="사진 후보"><div class="candidate-slide-bottom"><strong id="candidateTitle"></strong><small id="candidateRights"></small><div class="action-row"><button class="btn" data-act="candidate-prev">← 이전</button><button class="btn" id="candidatePause" data-act="candidate-pause">⏸ 일시정지</button><button class="btn" data-act="candidate-next">다음 →</button><button class="btn green" id="candidateSave" data-act="candidate-save" type="button" hidden>📥 이 사진을 사진첩에 저장</button><a class="btn ghost" id="candidateSource" target="_blank" rel="noopener noreferrer">원본·이용조건 ↗</a></div></div></div>
-<script src="landmarks-data.js?v=testplace-41-100"></script>
-<script src="app.js?v=testplace-41-100"></script>
+<script src="landmarks-data.js?v=new41-test01"></script>
+<script src="app.js?v=new41-test01"></script>
 <script>
 /* Built-in PWA updater: no service worker; preserves origin and browser data. */
 (function(){
@@ -85,4 +85,4 @@
  });
 })();
 </script>
-<script>(function(){const k='new41_global_brightness_v1',el=document.getElementById('globalBright'),out=document.getElementById('globalBrightValue');let v=Number(localStorage.getItem(k)||108);if(v<70||v>150)v=108;function set(n){el.value=n;out.textContent=n+'%';document.documentElement.style.setProperty('--lm-bright',n/100);localStorage.setItem(k,String(n));}set(v);el.addEventListener('input',()=>set(Number(el.value)));document.getElementById('globalBrightReset').addEventListener('click',()=>set(100));})();</script></body></html>
+</body></html>
